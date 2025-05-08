@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   test:
-    runs-on: ubuntu - latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions / checkout@v3
@@ -16,10 +16,10 @@ jobs:
       - name: Install Dependencies
         run: pip install -r hello - devops / requirements . txt
       - name: Run Tests
-        run: python -m unittest discover -s hello - devops
+        run: python -m unittest discover -s hello-devops
 
   deploy:
-    runs-on: ubuntu - latest
+    runs-on: ubuntu-latest
     needs: test
     steps:
       - name: Deploy App
