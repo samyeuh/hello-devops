@@ -1,9 +1,15 @@
-FROM python:3.9
+FROM jenkins/jenkins:lts
 
-WORKDIR /app
+USER root
 
-COPY hello-devops/ /app
+# Installer Python 3, pip, venv
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip python3.11-venv
 
-RUN pip install -r requirements.txt
+# Installer Docker CLI
+RUN apt-get install -y docker.io
 
-CMD ["python", "app.py"]
+# Vérifier les installations
+RUN python3 --version && pip3 --version && docker --version
+
+USER jenkins
